@@ -1,6 +1,6 @@
 #WS
 
-**WS is a lightweight workspace manager for cli systems running bash**
+**A lightweight workspace manager for cli systems running bash**
 
 ## Contents
  - [How It Works] (#how-it-works)
@@ -10,6 +10,8 @@
    - [Running a workspace] (#running-a-workspace)
  - [Configuration] (#configuration)
    - [Setting the editor command] (#setting-the-editor-command)
+ - [Licensing] (#licensing)
+ - [Contact & Bug Reports] (#contact-and-bug-reports)
 
 ##How it works
 Each directory that you want to open a workspace from should contain a file
@@ -92,3 +94,24 @@ expanded in future releases.
 WS allows you to set your own editor command. The default is `vim -p` which
 will launch your files in vim in seperate tabs. To change this, open *~/.wsrc*
 and edit the field that reads `editor="vim -p"` to your preferred choice.
+
+##Licensing
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see http://www.gnu.org/licenses/.
+
+##Contact and Bug Reports
+Bug reports can be filled at https://github.com/o-jay/ws/issues
+
+If you fix an issue or add new features please send a pull request and I'll be
+more than happy to merge your changes.
+
+If you have any issues you can contact me at *ojay@ojay.co.uk*
