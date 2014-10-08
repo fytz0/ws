@@ -24,10 +24,9 @@ open my chosen editor with all of the files listed in *headers* by running
 ##Installation
 An installation script is included in this repository for ease.
 
-To install simply run `./install -i` in this directory
-To uninstall run `./install -u`
+To install simply run `./install -i` in this directory.
 
-Both of these operations will require root privileges.
+To uninstall run `./install -u`.
 
 ##Usage
 ###Writing a ws file
@@ -43,7 +42,7 @@ NAME {
 You can include as many workspaces in a file as you wish.
 
 For instance, you can define a workspace named *gui* containing the files
-gui.h, gui.c, guimacros.h like this:
+gui.h, gui.c and guimacros.h like this:
 ```
 gui {
 	gui.h
