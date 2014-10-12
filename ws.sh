@@ -29,7 +29,7 @@ if [ -f $RC ]; then
 			RUNCMD="${value//\"/}"
 			;;
 		*)
-			echo Whoops
+			echo "Warning: Unrecognized config option '$rcvar' in '$RC'"
 			;;
 		esac
 	done < $RC
