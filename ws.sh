@@ -52,7 +52,8 @@ function print_help {
 	echo The following options may be used:
 	echo "  -h,--help     Show this help message"
 	echo "  -v,--version  Show version information"
-	echo "  -e,--echo     Instead of executing the run command, print it"
+	echo "  -e,--edit     Edit the current directories .ws file"
+	echo "  -p,--print    Instead of executing the run command, print it"
 	exit 0
 }
 
@@ -64,6 +65,11 @@ function print_version {
 	exit 0
 }
 
+function edit_spec {
+	$RUNCMD $CFG
+	exit 0
+}
+
 for i in `seq 0 $(($argc-1))`; do
 	case "${argv[i]}" in
 	-h|--help)
@@ -72,7 +78,10 @@ for i in `seq 0 $(($argc-1))`; do
 	-v|--version)
 		print_version
 		;;
-	-e|--echo)
+	-e|--edit)
+		edit_spec
+		;;
+	-p|--print)
 		echo_cmd=true
 		;;
 	*)
