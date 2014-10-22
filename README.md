@@ -11,6 +11,7 @@
    - [Running a workspace] (#running-a-workspace)
  - [Configuration] (#configuration)
    - [Setting the editor command] (#setting-the-editor-command)
+   - [Setting the default workspace name] (#setting-the-default-workspace-name)
  - [Licensing] (#licensing)
  - [Contact & Bug Reports] (#contact-and-bug-reports)
 
@@ -106,6 +107,10 @@ WS allows you to set your own editor command. This can be done by opening
 choice. If no configuration file exists or if it doesn't specify an editor
 command, WS will first try to use the environment variable *EDITOR*, and if
 this doesn't exist it will default to "vim -p".
+
+###Setting the default workspace name
+To set the default workspace name, edit the *default_ws* field in the config
+file. The default value is "ws".
 
 ##Licensing
 This program is free software: you can redistribute it and/or modify it under

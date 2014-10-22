@@ -12,11 +12,10 @@ COPYRIGHT="Copyright 2014 Ollie Etherington"
 LICENSE="Free software under the terms of the GNU GPLv3"
 
 # Program data
-${EDITOR:="vim -p"}	# Get the EDITOR env var if it exists, else set it
-RUNCMD=$EDITOR		# Command to run
+RUNCMD=${EDITOR:="vim -p"}	# Get the EDITOR env var if it exists, else set it
 RC="$HOME/.wsrc"	# Global RC config
 CFG=".ws"			# Local definitions#tokens=( `cat ${CFG} | tr ' ' '\n'` )
-WS="ws"				# Workspace name
+DEFAULT_WS="ws"		# The default workspace
 
 # Check for system config and process it if it exists
 # Setup the internal field seperator for parsing
@@ -29,12 +28,18 @@ if [ -f $RC ]; then
 		editor)
 			RUNCMD="${value//\"/}"
 			;;
+		default_ws)
+			DEFAULT_WS="${value//\"/}"
+			;;
 		*)
 			echo "Warning: Unrecognized config option '$rcvar' in '$RC'"
 			;;
 		esac
 	done < $RC
 fi
+
+# The workspace to run
+WS=$DEFAULT_WS
 
 # Restore the internal field seperator for later
 IFS=$backupIFS
