@@ -12,9 +12,10 @@ COPYRIGHT="Copyright 2014 Ollie Etherington"
 LICENSE="Free software under the terms of the GNU GPLv3"
 
 # Program data
-RUNCMD="vim -p"		# Command to run
+${EDITOR:="vim -p"}	# Get the EDITOR env var if it exists, else set it
+RUNCMD=$EDITOR		# Command to run
 RC="$HOME/.wsrc"	# Global RC config
-CFG=".ws"			# Local definitions
+CFG=".ws"			# Local definitions#tokens=( `cat ${CFG} | tr ' ' '\n'` )
 WS="ws"				# Workspace name
 
 # Check for system config and process it if it exists
@@ -105,7 +106,6 @@ fi
 # Get workspace definition
 definition=`cat ${CFG}`
 tokens=( $definition )
-#tokens=( `cat ${CFG} | tr ' ' '\n'` )
 num_tokens=${#tokens[@]}
 max_token=$(($num_tokens-1))
 ws_not_found=true

@@ -101,9 +101,11 @@ option (setting the editor command as described below), but it's scope may be
 expanded in future releases.
 
 ###Setting the editor command
-WS allows you to set your own editor command. The default is `vim -p` which
-will launch your files in vim in seperate tabs. To change this, open *~/.wsrc*
-and edit the field that reads `editor="vim -p"` to your preferred choice.
+WS allows you to set your own editor command. This can be done by opening
+*~/.wsrc* and editing the field that reads `editor="vim -p"` to your preferred
+choice. If no configuration file exists or if it doesn't specify an editor
+command, WS will first try to use the environment variable *EDITOR*, and if
+this doesn't exist it will default to "vim -p".
 
 ##Licensing
 This program is free software: you can redistribute it and/or modify it under
