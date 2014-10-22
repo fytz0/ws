@@ -6,6 +6,11 @@ dest="/usr/bin/ws"
 rcsrc="wsrc"
 rcdest="$HOME/.wsrc"
 
+# Manuals
+man1="ws.1"
+man5="wsrc.5"
+mandir="/usr/share/man"
+
 # Make sure we're NOT running as root - it messes up the $HOME variable
 if [ -n "$SUDO_COMMAND" ]; then
 	echo "Error: Don't run this script with sudo"
@@ -20,12 +25,18 @@ function install {
 	fi
 
 	sudo cp $src $dest
+
+	gzip -fk $man1 $man5
+
+	sudo mv ${man1}.gz ${mandir}/man1
+	sudo mv ${man5}.gz ${mandir}/man5
+
 	echo Installation complete
 }
 
 # Uninstall function - note that we don't delete the rc
 function uninstall {
-	rm -rf $dest
+	rm -rf $dest ${mandir}/man1/${man1}.gz ${mandir}/man5/${man5}.gz
 	echo Uninstallation complete
 }
 

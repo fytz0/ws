@@ -1,0 +1,55 @@
+.\" -*- nroff -*-
+.\" Copyright (C) 2014 Ollie Etherington
+.\"
+.\" This document is licensed under the terms of The GNU Free Documentation
+.\" License, as published by the Free Software Foundation, version 1.2 or
+.\" (at your option) any later version, with no Invariant Sections, no
+.\" Front-Cover Texts, and no Back-Cover Texts.  You should have received a
+.\" copy of the GNU Free Documentation License along with this program.  If
+.\" not, see <http://www.gnu.org/licenses/>.
+.\"
+.\" Update the date below whenever revising:
+.TH WSRC 5 "21 October 2014" "Version 0.0.1"
+
+.SH NAME
+wsrc - The ws workspace manager's rcfile
+
+.SH DESCRIPTION
+This manual page briefly documents the \fBws\fP's rcfile.
+.PP
+\fBws\fP is a free lightweight workspace manager for use on systems running
+Bash with configuration for editor invocation and support for multiple
+workspace definitions per directory.
+.PP
+The \fIwsrc\fP file contains the default settings for \fBws\fP. It should be
+located at \fI~/.wsrc\fP. A default file should be created when ws is
+installed.
+
+.SH OPTIONS
+Options in the configuration file take the form of \fIoption="value"\fP.
+The configuration file currently only supports one option; setting the editor
+command to run:
+.TP
+.B editor
+The editor command to run to open the selected workspace. The default value is
+"\fIvim -p\fP" which will open the files in the workspace in seperate tabs in
+the text editor vim.
+.TP
+.B default_ws
+The name of the default workspace. The default value is "\fIws\fP".
+
+.SH Files
+.TP
+.B \fI~/.wsrc\fP
+Per-user configuration file
+
+.SH SEE ALSO
+.PD 0
+.TP
+\fBws\fP(1)
+
+.SH AUTHOR
+Ollie Etherington <ojay@ojay.co.uk>.
+.PP
+This document is available under the termsof the GNU Free Documentation
+License.
