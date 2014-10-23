@@ -7,7 +7,7 @@
 # Info
 NAME="WS"
 DESCRIPTION="The Workspace Manager"
-VERSION="0.0.1"
+VERSION="0.1.0"
 COPYRIGHT="Copyright 2014 Ollie Etherington"
 LICENSE="Free software under the terms of the GNU GPLv3"
 

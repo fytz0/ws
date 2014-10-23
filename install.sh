@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Welcome message
+echo "WS Installer Version 0.1.0"
+
 # Files
 src="ws.sh"
 dest="/usr/bin/ws"
