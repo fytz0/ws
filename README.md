@@ -95,6 +95,21 @@ ws { MY_FILE_1 MY_FILE_2 }
 Also note that if multiple workspaces in the same file are given the same name,
 the FIRST definition will be launched.
 
+Normally *ws* workspaces use the default editor command (which can be set
+using the method described in *Setting the editor command* below) but it's
+also possible to give workspaces their own custom editor commands. This is
+done with the following syntax:
+```
+ws - "nano --mouse" {
+	MY_FILE_1
+}
+```
+This will invoke the command *nano --mouse MY_FILE_1*. Note that the whitespace
+either side of the hyphen is necessary otherwise it will be interpreted as a
+workspace name with a dash in it. Single word commands such as *nano* or
+*emacs* don't require quotes but any command with whitespace in does to avoid
+ambiguity.
+
 ##Configuration
 When you install ws using the included *install.sh* script, it will create a
 default configuration file at *~/.wsrc*. Currently, this file only has one

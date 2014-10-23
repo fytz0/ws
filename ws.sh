@@ -50,6 +50,7 @@ using_custom_ws_name=false
 argv=( $@ )
 argc=$#
 
+# Help message
 function print_help {
 	echo $NAME - $DESCRIPTION
 	echo "Usage: ws [WORKSPACE NAME] [OPTIONS]..."
@@ -63,6 +64,7 @@ function print_help {
 	exit 0
 }
 
+# Version info
 function print_version {
 	echo $NAME - $DESCRIPTION
 	echo Version $VERSION
@@ -71,6 +73,7 @@ function print_version {
 	exit 0
 }
 
+# Edit this directories workspace definition file
 function edit_spec {
 	$RUNCMD $CFG
 	exit 0
@@ -118,21 +121,49 @@ file_hook=""
 
 # Do the parsing
 for i in `seq 0 $max_token`; do
+	# Only bother properly parsing the workspace we actually want to open
 	if [ ${tokens[i]} == $WS ]; then
 		ws_not_found=false
 
 		((i++))
 
+		# Check if this workspace has a custom editor command
+		if [ ${tokens[i]} == "-" ]; then
+			((i++))
+
+			# It does - get it
+			NEWCMD=${tokens[i]}
+
+			# If it's multiple tokens in quotes we need to get the rest
+			if [[ $NEWCMD == \"* ]]; then
+				while [[ $NEWCMD != *\" ]]; do
+					((i++))
+					NEWCMD="$NEWCMD ${tokens[i]}"
+				done
+			fi
+
+			# Remove the actual quotes from the string
+			NEWCMD=`echo $NEWCMD | sed 's/^"\(.*\)"$/\1/'`
+
+			# Set the editor command
+			RUNCMD=$NEWCMD
+		fi
+
+		((i++))
+
+		# Make sure we have a list of files
 		if [ ${tokens[i]} != "{" ]; then
-			echo "Syntax Error: Expected '{'"
+			echo "Syntax Error: Expected '{' found '${tokens[i]}'"
 			exit 0
 		fi
 
 		((i++))
 
+		# We do - get them
 		while [ ${tokens[i]} != "}" ]; do
+			# Make sure we're still in bounds
 			if [ $i == $max_token ]; then
-				echo "Syntax Error: Expected '}'"
+				echo "Syntax Error: Expected '}' found EOF"
 				exit 0
 			fi
 
@@ -149,7 +180,7 @@ if $ws_not_found; then
 	exit 0
 fi
 
-# Start the workspace
+# Start the workspace (or echo it...)
 if $echo_cmd; then
 	echo $RUNCMD $file_hook
 else

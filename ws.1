@@ -9,7 +9,7 @@
 .\" not, see <http://www.gnu.org/licenses/>.
 .\"
 .\" Update the date below whenever revising:
-.TH WS 1 "21 October 2014" "Version 0.0.1"
+.TH WS 1 "23 October 2014" "Version 0.0.1"
 
 .SH NAME
 ws - A lightweight workspace manager
@@ -25,6 +25,12 @@ This manual page briefly documents the \fBws\fP command.
 \fBws\fP is a free lightweight workspace manager for use on systems running
 Bash with configuration for editor invocation and support for multiple
 workspace definitions per directory.
+.PP
+Global configuration is done in the \fIwsrc\fP file described in detail in it's
+own manpage; \fBwsrc\fP(5).
+.PP
+Workspaces are defined in directory specific files called \fI.ws\fP. Their
+syntax is described below in the section entitled \fIwriting a .ws file\fP.
 
 .SH OPTIONS
 .TP
@@ -39,6 +45,32 @@ Display a help message specifying command line usage.
 .TP
 .B \-v (\-\-version)
 Display program version information.
+
+.SH WRITING A .WS FILE
+Workspaces a defined at the directory level in a file called \fI.ws\fP.
+Invoking \fBws\fP in a directory without providing a workspace name on the
+command line will open the default workspace which is, by default, called
+\fBws\fP. It is defined like so:
+.PP
+\fBws { MY_FILE_1 MY_FILE_2 }\fP
+.PP
+Note that whitespace is syntactically unimportant - this definition could have
+been split over several lines for easier reading and editing.
+.PP
+In the event that multiple workspaces in the same directory are given the same
+name, the FIRST definition will always be launched.
+.PP
+Normally workspaces use the default editor command which can be set in the
+wsrc configuration file but it's also possible to give workspaces their own
+custom editor commands. This is done with the following syntax:
+.PP
+\fBws - "nano --mouse" { MY_FILE_1 }\fP
+.PP
+This will invoke the command "nano --mouse MY_FILE_1". Note that the whitespace
+either side of the hyphen is necessary otherwise it will be interpreted as a
+workspace name with a dash in it. Single word commands such as "nano" or
+"emacs" don't require quotes but any command with whitespace in does to avoid
+ambiguity.
 
 .SH BUGS
 Please send any comments or bug reports to \fBojay@ojay.co.uk\fP.
