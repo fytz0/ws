@@ -7,7 +7,7 @@
 # Info
 NAME="WS"
 DESCRIPTION="The Workspace Manager"
-VERSION="0.1.0"
+VERSION="0.1.1"
 COPYRIGHT="Copyright 2014 Ollie Etherington"
 LICENSE="Free software under the terms of the GNU GPLv3"
 
@@ -147,9 +147,9 @@ for i in `seq 0 $max_token`; do
 
 			# Set the editor command
 			RUNCMD=$NEWCMD
-		fi
 
-		((i++))
+			((i++))
+		fi
 
 		# Make sure we have a list of files
 		if [ ${tokens[i]} != "{" ]; then
