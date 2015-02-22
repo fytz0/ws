@@ -36,11 +36,12 @@ To uninstall run `./install -u`.
 ###Command line options
 `ws -e` Edit the current directories .ws config file
 `ws -p` Instead of running the final editor command, print it to stdout
+`ws -l` List the available workspaces and the files they contain
 `ws -h` Show a help dialog
 `ws -v` Show the version dialog
 
-Note that these four options also have long versions; --edit, --print, --help
-and --version respectively.
+Note that these options also have long versions; --edit, --print, --list,
+--help and --version respectively.
 
 ###Writing a ws file
 Each .ws file defines workspaces with the syntax:

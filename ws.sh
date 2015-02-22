@@ -7,7 +7,7 @@
 # Info
 NAME="WS"
 DESCRIPTION="The Workspace Manager"
-VERSION="0.1.1"
+VERSION="0.1.2"
 COPYRIGHT="Copyright 2014 Ollie Etherington"
 LICENSE="Free software under the terms of the GNU GPLv3"
 
@@ -46,6 +46,7 @@ IFS=$backupIFS
 
 # Parse command line arguments
 echo_cmd=false
+list_ws=false
 using_custom_ws_name=false
 argv=( $@ )
 argc=$#
@@ -61,6 +62,7 @@ function print_help {
 	echo "  -v,--version  Show version information"
 	echo "  -e,--edit     Edit the current directories .ws file"
 	echo "  -p,--print    Instead of executing the run command, print it"
+	echo "  -l,--list     List the available workspaces"
 	exit 0
 }
 
@@ -93,6 +95,9 @@ for i in `seq 0 $(($argc-1))`; do
 	-p|--print)
 		echo_cmd=true
 		;;
+	-l|--list)
+		list_ws=true
+		;;
 	*)
 		if $using_custom_ws_name; then
 			echo "Error: Multiple workspaces given ('$WS' and '${argv[i]}')"
@@ -118,6 +123,67 @@ num_tokens=${#tokens[@]}
 max_token=$(($num_tokens-1))
 ws_not_found=true
 file_hook=""
+
+# If we're listing the workspaces, do that and then exit
+if [ $list_ws == true ]; then
+	i=0
+	while [ $i -lt $max_token ]; do
+		# Get the workspace name
+		WS=${tokens[i]}
+
+		((i++))
+
+		# Check is we're using a custom editor command
+		if [ ${tokens[i]} == "-" ]; then
+			((i++))
+
+			EDITOR_CMD=${tokens[i]}
+
+			# If it's multiple tokens in quotes we need to get the rest
+			if [[ $EDITOR_CMD == \"* ]]; then
+				while [[ $EDITOR_CMD != *\" ]]; do
+					((i++))
+					EDITOR_CMD="$EDITOR_CMD ${tokens[i]}"
+				done
+			fi
+
+			# Remove the actual quotes from the string
+			EDITOR_CMD=`echo $EDITOR_CMD | sed 's/^"\(.*\)"$/\1/'`
+
+			((i++))
+		else
+			EDITOR_CMD=$RUNCMD
+		fi
+
+		# Print the name and editor command
+		echo "$WS (Command: $EDITOR_CMD)"
+
+		# Make sure we have a list of files
+		if [ ${tokens[i]} != "{" ]; then
+			echo "Syntax Error: Expected '{' found '${tokens[i]}'"
+			exit 0
+		fi
+
+		((i++))
+
+		# We do - get them
+		while [ ${tokens[i]} != "}" ]; do
+			# Make sure we're still in bounds
+			if [ $i == $max_token ]; then
+				echo "Syntax Error: Expected '}' found EOF"
+				exit 0
+			fi
+
+			echo "  - ${tokens[i]}"
+
+			((i++))
+		done
+
+		((i++))
+	done
+
+	exit 0
+fi
 
 # Do the parsing
 for i in `seq 0 $max_token`; do
