@@ -142,9 +142,9 @@ You should have received a copy of the GNU General Public License along with
 this program.  If not, see http://www.gnu.org/licenses/.
 
 ##Contact and Bug Reports
-Bug reports can be filled at https://github.com/o-jay/ws/issues
+Bug reports can be filled at https://github.com/oetherington/ws/issues
 
 If you fix an issue or add new features please send a pull request and I'll be
 more than happy to merge your changes.
 
-If you have any issues you can contact me at *ojay@ojay.co.uk*
+If you have any issues you can contact me at *ollie.etherington@gmail.com*

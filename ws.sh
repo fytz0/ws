@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # The ws workspace manager
-# Copyright 2014 Ollie Etherington
+# Copyright 2014-2016 Ollie Etherington
 # Free software under the GNU GPLv3
 
 # Info
 NAME="WS"
 DESCRIPTION="The Workspace Manager"
-VERSION="0.1.2"
-COPYRIGHT="Copyright 2014 Ollie Etherington"
+VERSION="0.1.3"
+COPYRIGHT="Copyright 2014-2016 Ollie Etherington"
+WEBSITE="github.com/oetherington/ws"
 LICENSE="Free software under the terms of the GNU GPLv3"
 
 # Program data
@@ -54,6 +55,7 @@ argc=$#
 # Help message
 function print_help {
 	echo $NAME - $DESCRIPTION
+	echo $WEBSITE
 	echo "Usage: ws [WORKSPACE NAME] [OPTIONS]..."
 	echo Save common file groups to directory specific workspaces and associate
 	echo them with an editor command
@@ -70,6 +72,7 @@ function print_help {
 function print_version {
 	echo $NAME - $DESCRIPTION
 	echo Version $VERSION
+	echo $WEBSITE
 	echo $COPYRIGHT
 	echo $LICENSE
 	exit 0
