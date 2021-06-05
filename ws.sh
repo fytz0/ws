@@ -6,7 +6,7 @@
 # Info
 NAME="WS"
 DESCRIPTION="CLI Workspace Manager"
-VERSION="0.1.4"
+VERSION="1.0.0"
 COPYRIGHT="Copyright Ollie Etherington"
 WEBSITE="www.etherington.xyz"
 LICENSE="Free software under the GNU GPLv3"
