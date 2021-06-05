@@ -1,16 +1,15 @@
 #!/bin/bash
 
-# The ws workspace manager
-# Copyright 2014-2016 Ollie Etherington
+# ws workspace manager
 # Free software under the GNU GPLv3
 
 # Info
 NAME="WS"
-DESCRIPTION="The Workspace Manager"
-VERSION="0.1.3"
-COPYRIGHT="Copyright 2014-2016 Ollie Etherington"
-WEBSITE="github.com/oetherington/ws"
-LICENSE="Free software under the terms of the GNU GPLv3"
+DESCRIPTION="CLI Workspace Manager"
+VERSION="0.1.4"
+COPYRIGHT="Copyright Ollie Etherington"
+WEBSITE="www.etherington.xyz"
+LICENSE="Free software under the GNU GPLv3"
 
 # Program data
 RUNCMD=${EDITOR:="vim -p"}	# Get the EDITOR env var if it exists, else set it
